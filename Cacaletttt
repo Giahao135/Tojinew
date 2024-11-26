@@ -1,0 +1,2330 @@
+local l = game.Players.LocalPlayer.Character
+l.Sheathe:Destroy()
+l["#KATANAWEAPON"]:Destroy()
+
+--HAIR REMOVE
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+-- Function to remove hair
+local function removeHair()
+    for _, accessory in pairs(character:GetChildren()) do
+        if accessory:IsA("Accessory") and accessory:FindFirstChild("Handle") then
+            if accessory.Handle:FindFirstChild("Mesh") then
+                accessory:Destroy()
+            end
+        end
+    end
+end
+
+-- Remove hair when the character spawns
+character:WaitForChild("Humanoid").Died:Connect(function()
+    player.CharacterAdded:Connect(removeHair)
+end)
+
+-- Initial removal
+removeHair()
+
+--END
+
+--[[TOJI HEAD]]
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local head = character:WaitForChild("Head") -- Ensure the "Head" exists
+
+-- Load the sword model
+local swordModel = game:GetObjects("rbxassetid://18671066668")[1]
+
+-- Ensure the sword model has a handle
+local handle = swordModel:FindFirstChild("Handle") or swordModel:FindFirstChildWhichIsA("BasePart")
+if not handle then
+    error("The sword model must have a 'Handle' or main part to attach.")
+end
+
+-- Set the sword's parent to the character
+swordModel.Parent = character
+
+-- Weld the sword to the head
+local weld = Instance.new("Weld")
+weld.Part0 = head
+weld.Part1 = handle
+
+-- Adjust the sword's position and orientation to align properly with the head
+weld.C0 = CFrame.new(0, 0, 0) * CFrame.Angles(0, math.rad(180), math.rad(0))
+weld.Parent = head
+
+-- Ensure the sword's orientation matches the intended alignment
+handle.CFrame = head.CFrame * weld.C0
+
+-- Confirm execution
+print("Sword model aligned with the player's head!")
+
+--[[TOJI HEAD]]
+
+--[[TOJI HAIR]]
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local head = character:WaitForChild("Head") -- Ensure the "Head" exists
+
+-- Load the sword model
+local swordModel = game:GetObjects("rbxassetid://15029874730")[1]
+
+-- Ensure the sword model has a handle
+local handle = swordModel:FindFirstChild("Handle") or swordModel:FindFirstChildWhichIsA("BasePart")
+if not handle then
+    error("The sword model must have a 'Handle' or main part to attach.")
+end
+
+-- Set the sword's parent to the character
+swordModel.Parent = character
+
+-- Weld the sword to the head
+local weld = Instance.new("Weld")
+weld.Part0 = head
+weld.Part1 = handle
+
+-- Adjust the sword's position and orientation to align properly with the head
+weld.C0 = CFrame.new(0.1, 0.2, 0) * CFrame.Angles(0, math.rad(0), math.rad(0))
+weld.Parent = head
+
+-- Ensure the sword's orientation matches the intended alignment
+handle.CFrame = head.CFrame * weld.C0
+
+-- Confirm execution
+print("Sword model aligned with the player's head!")
+
+--[[TOJI HAIR]]
+
+--[[TOJI SWORD]]
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local rightArm = character:WaitForChild("Right Arm") -- R6 uses "Right Arm"
+
+-- Load the sword model
+local swordModel = game:GetObjects("rbxassetid://73159127288960")[1]
+
+-- Ensure the sword model has a handle
+local handle = swordModel:FindFirstChild("Handle") or swordModel:FindFirstChildWhichIsA("BasePart")
+if not handle then
+    error("The sword model must have a 'Handle' or main part to attach.")
+end
+
+-- Disable collisions on the sword parts
+for _, part in pairs(swordModel:GetDescendants()) do
+    if part:IsA("BasePart") then
+        part.CanCollide = false
+    end
+end
+
+-- Set the sword's parent to the character
+swordModel.Parent = character
+
+-- Weld the sword to the right arm
+local weld = Instance.new("Weld")
+weld.Part0 = rightArm
+weld.Part1 = handle
+
+-- Adjust the sword's position and orientation to align properly with the hand
+weld.C0 = CFrame.new(-0.1, -1, -2.2) * CFrame.Angles(0, math.rad(90), math.rad(270))
+weld.Parent = rightArm
+
+-- Ensure the sword's orientation matches the hand grip
+handle.CFrame = rightArm.CFrame * weld.C0
+
+-- Confirm execution
+print("Sword model aligned with the player's right hand, blade pointing forward, and noclip enabled!")
+
+--[[END TOJI SWORD]]
+
+--[[WORM MODEL]]
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local Torso = character:WaitForChild("Torso") -- R6 uses "Torso"
+
+-- Load the sword model
+local swordModel = game:GetObjects("rbxassetid://77150016141378")[1]
+
+-- Ensure the sword model has a handle
+local handle = swordModel:FindFirstChild("Handle") or swordModel:FindFirstChildWhichIsA("BasePart")
+if not handle then
+    error("The sword model must have a 'Handle' or main part to attach.")
+end
+
+-- Disable collisions on the sword parts
+for _, part in pairs(swordModel:GetDescendants()) do
+    if part:IsA("BasePart") then
+        part.CanCollide = false
+    end
+end
+
+-- Set the sword's parent to the character
+swordModel.Parent = character
+
+-- Weld the sword to the right arm
+local weld = Instance.new("Weld")
+weld.Part0 = Torso
+weld.Part1 = handle
+
+-- Adjust the sword's position and orientation to align properly with the hand
+weld.C0 = CFrame.new(0, 0.8, 0) * CFrame.Angles(0, math.rad(0), math.rad(10))
+weld.Parent = Torso
+
+-- Ensure the sword's orientation matches the hand grip
+handle.CFrame = Torso.CFrame * weld.C0
+
+-- Confirm execution
+print("Sword model aligned with the player's right hand, blade pointing forward, and noclip enabled!")
+
+--[[END WORM]]
+
+--[[INVERTED SPEAR OH]]
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local Torso = character:WaitForChild("Torso") -- R6 uses "Torso"
+
+-- Load the sword model
+local swordModel = game:GetObjects("rbxassetid://83012889994629")[1]
+
+-- Ensure the sword model has a handle
+local handle = swordModel:FindFirstChild("Handle") or swordModel:FindFirstChildWhichIsA("BasePart")
+if not handle then
+    error("The sword model must have a 'Handle' or main part to attach.")
+end
+
+-- Disable collisions on the sword parts
+for _, part in pairs(swordModel:GetDescendants()) do
+    if part:IsA("BasePart") then
+        part.CanCollide = false
+    end
+end
+
+-- Set the sword's parent to the character
+swordModel.Parent = character
+
+-- Weld the sword to the right arm
+local weld = Instance.new("Weld")
+weld.Part0 = Torso
+weld.Part1 = handle
+
+-- Adjust the sword's position and orientation to align properly with the hand
+weld.C0 = CFrame.new(-1.1, 1.2, 0) * CFrame.Angles(-30, math.rad(5), math.rad(0))
+weld.Parent = Torso
+
+-- Ensure the sword's orientation matches the hand grip
+handle.CFrame = Torso.CFrame * weld.C0
+
+-- Confirm execution
+print("Sword model aligned with the player's right hand, blade pointing forward, and noclip enabled!")
+
+--[[INVERTED SPEAR OH]]
+
+--[[TOJI CLOTHING]]
+
+local Shirt = true
+local Pants = true
+local ShirtId = 14914133467
+local PantsId = 15188732574
+
+-- don't change anything here unless you know
+if Shirt then
+    for _, d in ipairs(game.Players.LocalPlayer.Character:GetChildren()) do
+        if d:IsA("Shirt") then
+            d.ShirtTemplate = "rbxassetid://" .. ShirtId
+        end
+    end
+end
+
+if Pants then
+    for _, d in ipairs(game.Players.LocalPlayer.Character:GetChildren()) do
+        if d:IsA("Pants") then
+            d.PantsTemplate = "rbxassetid://" .. PantsId
+        end
+    end
+end
+
+--[[TOJI CLOTHING END]]
+
+local Animation = 13927612951
+local StartTime = 1.6 -- what duration it starts like video
+local Speed = 0.2 -- animation speed
+local Duration= 5 -- how much till the animation stops
+
+local a = Instance.new("Animation")
+a.AnimationId = "rbxassetid://" .. Animation
+local p = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(a)
+p:Play()
+p.TimePosition = StartTime -- what duration it starts like video
+p:AdjustSpeed(0.3)
+delay(Duration, function() -- delete these 3 lines if you don't want to stop it or you can adjust 7 to less or longer to stop animation 
+p:Stop()
+end)
+
+local player = game.Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+local hotbar = playerGui:WaitForChild("Hotbar")
+
+hotbar.Enabled = false
+
+local player = game.Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+local ult = playerGui:WaitForChild("ScreenGui")
+
+ult.Enabled = false
+
+local player = game.Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+local TopbarPlus = playerGui:WaitForChild("TopbarPlus")
+
+TopbarPlus.Enabled = false
+
+local player = game.Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+local Chat = playerGui:WaitForChild("Chat")
+
+Chat.Enabled = false
+
+-- Function that uses a coroutine to wait without blocking other code
+local function asyncWait(seconds, callback)
+    coroutine.wrap(function()
+        wait(seconds)
+        if callback then callback() end
+    end)()
+end
+
+asyncWait(5, function() --change 5 to the end of yo cutscene or smth
+    hotbar.Enabled = true
+    ult.Enabled = true
+    TopbarPlus.Enabled = true
+    Chat.Enabled = true
+end)
+
+local player = game.Players.LocalPlayer
+local camera = game.Workspace.CurrentCamera
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+local head = character:WaitForChild("Head")
+
+-- Save the current camera type and subject
+local originalCameraType = camera.CameraType
+local originalCameraSubject = camera.CameraSubject
+
+-- Set the camera to Scriptable mode (cutscene mode)
+camera.CameraType = Enum.CameraType.Scriptable
+
+-- Get the character's CFrame and calculate the camera's offset
+local radius = 10 -- Distance from the character to the camera
+local angle = math.rad(60) -- 40 degrees forward
+
+-- Calculate the position using trigonometry (left and forward)
+local offset = humanoidRootPart.CFrame:VectorToWorldSpace(Vector3.new(-radius * math.cos(angle), 2, -radius * math.sin(angle)))
+
+-- Set the camera's CFrame to the calculated position and make it look at the head
+camera.CFrame = CFrame.new(head.Position + offset, head.Position)
+
+-- Wait for 2 seconds
+wait(1.5)
+
+-- Return the camera to the player's default view
+camera.CameraType = originalCameraType
+camera.CameraSubject = originalCameraSubject
+
+local player = game.Players.LocalPlayer
+local camera = game.Workspace.CurrentCamera
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+local head = character:WaitForChild("Head")
+
+-- Save the current camera type and subject
+local originalCameraType = camera.CameraType
+local originalCameraSubject = camera.CameraSubject
+
+-- Set the camera to Scriptable mode (cutscene mode)
+camera.CameraType = Enum.CameraType.Scriptable
+
+-- Get the character's CFrame and calculate the camera's offset
+local radius = 7 -- Distance from the character to the camera
+local angle = math.rad(30) -- 40 degrees forward
+
+-- Calculate the position using trigonometry (left and forward)
+local offset = humanoidRootPart.CFrame:VectorToWorldSpace(Vector3.new(-radius * math.cos(angle), 10, -radius * math.sin(angle)))
+
+-- Set the camera's CFrame to the calculated position and make it look at the head
+camera.CFrame = CFrame.new(head.Position + offset, head.Position)
+
+-- Wait for 2 seconds
+wait(1.5)
+
+-- Return the camera to the player's default view
+camera.CameraType = originalCameraType
+camera.CameraSubject = originalCameraSubject
+
+local player = game.Players.LocalPlayer
+local camera = game.Workspace.CurrentCamera
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+local head = character:WaitForChild("Head")
+
+-- Save the current camera type and subject
+local originalCameraType = camera.CameraType
+local originalCameraSubject = camera.CameraSubject
+
+-- Set the camera to Scriptable mode (cutscene mode)
+camera.CameraType = Enum.CameraType.Scriptable
+
+-- Get the character's CFrame and calculate the camera's offset
+local radius = 20 -- Distance from the character to the camera
+local angle = math.rad(90) -- 40 degrees forward
+
+-- Calculate the position using trigonometry (left and forward)
+local offset = humanoidRootPart.CFrame:VectorToWorldSpace(Vector3.new(-radius * math.cos(angle), 15, -radius * math.sin(angle)))
+
+-- Set the camera's CFrame to the calculated position and make it look at the head
+camera.CFrame = CFrame.new(head.Position + offset, head.Position)
+
+-- Wait for 2 seconds
+wait(2)
+
+-- Return the camera to the player's default view
+camera.CameraType = originalCameraType
+camera.CameraSubject = originalCameraSubject
+
+coroutine.wrap(function()
+    -- Ensure the necessary services are available
+    local ts = game:GetService("TweenService")
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+    -- Create the BillboardGui and its components
+    local Dialogue = Instance.new("BillboardGui")
+    local Chat1 = Instance.new("Frame")
+    local Sub = Instance.new("TextLabel")
+
+    -- Configure the BillboardGui
+    Dialogue.Active = true
+    Dialogue.Size = UDim2.new(15, 0, 15, 0)
+    Dialogue.StudsOffset = Vector3.new(0.5, 1, 2) -- Adjust the offset to make it visible
+    Dialogue.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    Dialogue.Name = "Dialogue"
+    Dialogue.Parent = humanoidRootPart
+
+    -- Configure the frame inside the BillboardGui
+    Chat1.AnchorPoint = Vector2.new(0.5, 0.5)
+    Chat1.BackgroundColor3 = Color3.new(1, 1, 1)
+    Chat1.BorderColor3 = Color3.new(0, 0, 0)
+    Chat1.BorderSizePixel = 2
+    Chat1.Position = UDim2.new(0.600000024, 0, -0.2, 0) -- Adjust the position for visibility
+    Chat1.Size = UDim2.new(0.100000001, 0, 0.200000003, 0)
+    Chat1.Name = "Chat1"
+    Chat1.BackgroundTransparency = 1
+    Chat1.Parent = Dialogue
+
+    -- Configure the TextLabel inside the frame
+    Sub.FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Bold, Enum.FontStyle.Italic)
+    Sub.Text = "WOULD I LOSE?"
+    Sub.TextColor3 = Color3.new(0, 0, 0)
+    Sub.TextScaled = true
+    Sub.TextSize = 14
+    Sub.TextWrapped = true
+    Sub.AnchorPoint = Vector2.new(0.5, 0.5)
+    Sub.BackgroundColor3 = Color3.new(1, 1, 1)
+    Sub.TextTransparency = 1
+    Sub.BorderColor3 = Color3.new(0, 0, 0)
+    Sub.BorderSizePixel = 0
+    Sub.Position = UDim2.new(0.5, 0, 0.5, 0)
+    Sub.Size = UDim2.new(0.850000024, 0, 0.349999994, 0)
+    Sub.Name = "Sub"
+    Sub.Parent = Chat1
+    Sub.BackgroundTransparency = 1
+
+    -- Ensure cleanup of the BillboardGui elements after some time
+    game.Debris:AddItem(Chat1, 25)
+    game.Debris:AddItem(Sub, 25)
+
+    -- Define the tweenProperty function if missing
+    local function tweenProperty(object, properties, time)
+        local tweenInfo = TweenInfo.new(time, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        local tween = ts:Create(object, tweenInfo, properties)
+        tween:Play()
+        return tween
+    end
+
+    -- Animations for transparency and positioning
+    tweenProperty(Chat1, {BackgroundTransparency = 0}, 1)
+    tweenProperty(Sub, {TextTransparency = 0}, 1)
+    tweenProperty(Chat1, {Position = UDim2.new(0.6, 0, 0.4, 0)}, 1)
+    task.wait(2)
+    tweenProperty(Chat1, {BackgroundTransparency = 1}, 2)
+    tweenProperty(Sub, {TextTransparency = 1}, 2)
+end)()
+
+--second SPEECH
+
+coroutine.wrap(function()
+    -- Ensure the necessary services are available
+    local ts = game:GetService("TweenService")
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+    -- Create the BillboardGui and its components
+    local Dialogue = Instance.new("BillboardGui")
+    local Chat1 = Instance.new("Frame")
+    local Sub = Instance.new("TextLabel")
+
+    -- Configure the BillboardGui
+    Dialogue.Active = true
+    Dialogue.Size = UDim2.new(15, 0, 15, 0)
+    Dialogue.StudsOffset = Vector3.new(-3, -1, 2) -- Adjust the offset to make it visible
+    Dialogue.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    Dialogue.Name = "Dialogue"
+    Dialogue.Parent = humanoidRootPart
+
+    -- Configure the frame inside the BillboardGui
+    Chat1.AnchorPoint = Vector2.new(0.5, 0.5)
+    Chat1.BackgroundColor3 = Color3.new(1, 1, 1)
+    Chat1.BorderColor3 = Color3.new(0, 0, 0)
+    Chat1.BorderSizePixel = 2
+    Chat1.Position = UDim2.new(0.600000024, 0, -0.2, 0) -- Adjust the position for visibility
+    Chat1.Size = UDim2.new(0.100000001, 0, 0.200000003, 0)
+    Chat1.Name = "Chat1"
+    Chat1.BackgroundTransparency = 1
+    Chat1.Parent = Dialogue
+
+    -- Configure the TextLabel inside the frame
+    Sub.FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Bold, Enum.FontStyle.Italic)
+    Sub.Text = "OUR FIGHT JUST STARTED."
+    Sub.TextColor3 = Color3.new(0, 0, 0)
+    Sub.TextScaled = true
+    Sub.TextSize = 14
+    Sub.TextWrapped = true
+    Sub.AnchorPoint = Vector2.new(0.5, 0.5)
+    Sub.BackgroundColor3 = Color3.new(1, 1, 1)
+    Sub.TextTransparency = 1
+    Sub.BorderColor3 = Color3.new(0, 0, 0)
+    Sub.BorderSizePixel = 0
+    Sub.Position = UDim2.new(0.5, 0, 0.5, 0)
+    Sub.Size = UDim2.new(0.850000024, 0, 0.349999994, 0)
+    Sub.Name = "Sub"
+    Sub.Parent = Chat1
+    Sub.BackgroundTransparency = 1
+
+    -- Ensure cleanup of the BillboardGui elements after some time
+    game.Debris:AddItem(Chat1, 25)
+    game.Debris:AddItem(Sub, 25)
+
+    -- Define the tweenProperty function if missing
+    local function tweenProperty(object, properties, time)
+        local tweenInfo = TweenInfo.new(time, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        local tween = ts:Create(object, tweenInfo, properties)
+        tween:Play()
+        return tween
+    end
+
+    -- Animations for transparency and positioning
+    tweenProperty(Chat1, {BackgroundTransparency = 0}, 1)
+    tweenProperty(Sub, {TextTransparency = 0}, 1)
+    tweenProperty(Chat1, {Position = UDim2.new(0.6, 0, 0.4, 0)}, 1)
+    task.wait(2)
+    tweenProperty(Chat1, {BackgroundTransparency = 1}, 2)
+    tweenProperty(Sub, {TextTransparency = 1}, 2)
+end)()
+
+game.Players.LocalPlayer.PlayerGui.ScreenGui.MagicHealth.Health.Bar.Bar.ImageColor3 = Color3.fromRGB(128, 128, 128) -- gray
+
+--Move & Ultimate Names
+
+local player = game.Players.LocalPlayer
+
+local playerGui = player.PlayerGui
+
+local hotbar = playerGui:FindFirstChild("Hotbar")
+
+local backpack = hotbar:FindFirstChild("Backpack")
+
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local baseButton = hotbarFrame:FindFirstChild("1").Base
+
+local ToolName = baseButton.ToolName
+
+
+ToolName.Text = "One Second Slashes"
+
+
+local player = game.Players.LocalPlayer
+
+local playerGui = player.PlayerGui
+
+local hotbar = playerGui:FindFirstChild("Hotbar")
+
+local backpack = hotbar:FindFirstChild("Backpack")
+
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local baseButton = hotbarFrame:FindFirstChild("2").Base
+
+local ToolName = baseButton.ToolName
+
+
+ToolName.Text = "Phantom Cut"
+
+
+local player = game.Players.LocalPlayer
+
+local playerGui = player.PlayerGui
+
+local hotbar = playerGui:FindFirstChild("Hotbar")
+
+local backpack = hotbar:FindFirstChild("Backpack")
+
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local baseButton = hotbarFrame:FindFirstChild("3").Base
+
+local ToolName = baseButton.ToolName
+
+
+ToolName.Text = "Rush"
+
+
+local player = game.Players.LocalPlayer
+
+local playerGui = player.PlayerGui
+
+local hotbar = playerGui:FindFirstChild("Hotbar")
+
+local backpack = hotbar:FindFirstChild("Backpack")
+
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local baseButton = hotbarFrame:FindFirstChild("4").Base
+
+local ToolName = baseButton.ToolName
+
+
+ToolName.Text = "Two Step"
+
+
+local Players = game:GetService("Players")
+
+local player = Players.LocalPlayer
+
+local playerGui = player:WaitForChild("PlayerGui")
+
+
+local function findGuiAndSetText()
+
+    local screenGui = playerGui:FindFirstChild("ScreenGui")
+
+    if screenGui then
+
+        local magicHealthFrame = screenGui:FindFirstChild("MagicHealth")
+
+        if magicHealthFrame then
+
+            local textLabel = magicHealthFrame:FindFirstChild("TextLabel")
+
+            if textLabel then
+
+                textLabel.Text = "THE SILENCE CUT"
+
+            end
+
+        end
+
+    end
+
+end
+
+
+playerGui.DescendantAdded:Connect(findGuiAndSetText)
+
+findGuiAndSetText()
+
+
+--[[Animations]]
+
+--[[Move 1]]
+
+local animationId = 15290930205
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+local Sound1 = 7486846874  -- First sound ID
+local Volume1 = 4
+local Speed1 = 1
+
+local Sound2 = 13364832820  -- Second sound ID
+local Volume2 = 4
+local Speed2 = 2.5
+
+local soundToBlock = 15134096288  -- The sound to block
+
+local function onSoundPlayed(sound)
+    if sound.SoundId == "rbxassetid://" .. soundToBlock then
+        sound.Volume = 0  -- Set volume to 0 to block the sound
+    end
+end
+
+local function blockSpecificSound()
+    workspace.DescendantAdded:Connect(function(descendant)
+        if descendant:IsA("Sound") then
+            descendant.Played:Connect(function() onSoundPlayed(descendant) end)
+        end
+    end)
+
+    -- Check existing sounds in the workspace and block them
+    for _, sound in ipairs(workspace:GetDescendants()) do
+        if sound:IsA("Sound") then
+            sound.Played:Connect(function() onSoundPlayed(sound) end)
+        end
+    end
+end
+
+-- Block the specific sound at the start
+blockSpecificSound()
+
+local function onAnimationPlayed(animationTrack)
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+        -- Stop existing animations
+        for _, animTrack in pairs(humanoid:GetPlayingAnimationTracks()) do
+            animTrack:Stop()
+        end
+
+        -- Load and play the new animation
+        local AnimAnim = Instance.new("Animation")
+        AnimAnim.AnimationId = "rbxassetid://16062712948"
+        local Anim = humanoid:LoadAnimation(AnimAnim)
+        local startTime = 2.9
+        Anim:Play()
+        Anim:AdjustSpeed(1)
+        Anim.TimePosition = startTime
+        Anim:AdjustSpeed(1.8)
+
+        -- Play Sound1 after 0.8 seconds
+        wait(0.8)
+        local sound1 = Instance.new("Sound", game.Players.LocalPlayer.Character.HumanoidRootPart)
+        sound1.SoundId = "rbxassetid://" .. Sound1
+        sound1.Volume = Volume1
+        sound1.PlaybackSpeed = Speed1
+        sound1:Play()
+
+        -- Play Sound2 immediately using a coroutine to avoid delay
+        coroutine.wrap(function()
+            local sound2 = Instance.new("Sound", game.Players.LocalPlayer.Character.HumanoidRootPart)
+            sound2.SoundId = "rbxassetid://" .. Sound2
+            sound2.Volume = Volume2
+            sound2.PlaybackSpeed = Speed2
+            sound2:Play()
+        end)()
+
+        -- Wait 1 second before starting the particle effect
+        wait(1)
+
+        -- Emit particle effects from the Left Leg
+        local hit1 = game.ReplicatedStorage.Resources.KJEffects["lastkick"].Attachment:Clone()
+        hit1.Parent = game.Players.LocalPlayer.Character["HumanoidRootPart"]
+        for _, child in ipairs(hit1:GetChildren()) do
+            if child:IsA("ParticleEmitter") then
+                child:Emit(1) -- Emit 1 particle
+            end
+        end
+
+        -- Emit additional particles (launch effect 1)
+        local launch1 = game.ReplicatedStorage.Resources.KJEffects["launchup"].launchything:Clone()
+        launch1.Parent = game.Players.LocalPlayer.Character["HumanoidRootPart"]
+        for _, child in ipairs(launch1:GetChildren()) do
+            if child:IsA("ParticleEmitter") then
+                child:Emit(3) -- Emit 3 particles
+            end
+        end
+
+        -- Emit another launch effect (launch effect 2)
+        local launch2 = game.ReplicatedStorage.Resources.KJEffects["launchup"].launchything:Clone()
+        launch2.Parent = game.Players.LocalPlayer.Character["HumanoidRootPart"]
+        for _, child in ipairs(launch2:GetChildren()) do
+            if child:IsA("ParticleEmitter") then
+                child:Emit(2) -- Emit 2 particles
+            end
+        end
+
+        -- Emit another launch effect (launch effect 3)
+        local launch3 = game.ReplicatedStorage.Resources.KJEffects["launchup"].launchything:Clone()
+        launch3.Parent = game.Players.LocalPlayer.Character["HumanoidRootPart"]
+        for _, child in ipairs(launch3:GetChildren()) do
+            if child:IsA("ParticleEmitter") then
+                child:Emit(1) -- Emit 1 particle
+            end
+        end
+
+local Test = game:GetService("ReplicatedStorage").Resources.KJEffects["fine...Emit"].EmitBatch1
+local test = Test:Clone()
+test.Parent = game.Players.LocalPlayer.Character["HumanoidRootPart"]
+
+-- Define the blue-cyan color sequence
+local blueCyanColor = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(30,144,255)), -- Cyan-like blue at start
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(30,144,255))  -- Cyan at end
+})
+
+for _, child in ipairs(test:GetChildren()) do
+    if child:IsA("ParticleEmitter") then
+        -- Set the color of the ParticleEmitter
+        child.Color = blueCyanColor
+        
+        -- Emit particles and enable the emitter
+        child:Emit(15)
+        child.Enabled = true
+    end
+end
+        
+
+        -- Now we will add the coroutine to show the dialogue
+        coroutine.wrap(function()
+            -- Ensure the necessary services are available
+            local ts = game:GetService("TweenService")
+            local player = game.Players.LocalPlayer
+            local character = player.Character or player.CharacterAdded:Wait()
+            local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+            -- Create the BillboardGui and its components
+            local Dialogue = Instance.new("BillboardGui")
+            local Chat1 = Instance.new("Frame")
+            local Sub = Instance.new("TextLabel")
+
+            -- Configure the BillboardGui
+            Dialogue.Active = true
+            Dialogue.Size = UDim2.new(15, 0, 15, 0)
+            Dialogue.StudsOffset = Vector3.new(0, 0, 2) -- Adjust the offset to make it visible
+            Dialogue.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+            Dialogue.Name = "Dialogue"
+            Dialogue.Parent = humanoidRootPart
+
+            -- Configure the frame inside the BillboardGui
+            Chat1.AnchorPoint = Vector2.new(0.5, 0.5)
+            Chat1.BackgroundColor3 = Color3.new(1, 1, 1)
+            Chat1.BorderColor3 = Color3.new(0, 0, 0)
+            Chat1.BorderSizePixel = 2
+            Chat1.Position = UDim2.new(0.600000024, 0, -0.2, 0) -- Adjust the position for visibility
+            Chat1.Size = UDim2.new(0.100000001, 0, 0.200000003, 0)
+            Chat1.Name = "Chat1"
+            Chat1.BackgroundTransparency = 1
+            Chat1.Parent = Dialogue
+
+            -- Configure the TextLabel inside the frame
+            Sub.FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Bold, Enum.FontStyle.Italic)
+            Sub.Text = "Heh."
+            Sub.TextColor3 = Color3.new(0, 0, 0)
+            Sub.TextScaled = true
+            Sub.TextSize = 14
+            Sub.TextWrapped = true
+            Sub.AnchorPoint = Vector2.new(0.5, 0.5)
+            Sub.BackgroundColor3 = Color3.new(1, 1, 1)
+            Sub.TextTransparency = 1
+            Sub.BorderColor3 = Color3.new(0, 0, 0)
+            Sub.BorderSizePixel = 0
+            Sub.Position = UDim2.new(0.5, 0, 0.5, 0)
+            Sub.Size = UDim2.new(0.850000024, 0, 0.349999994, 0)
+            Sub.Name = "Sub"
+            Sub.Parent = Chat1
+            Sub.BackgroundTransparency = 1
+
+            -- Ensure cleanup of the BillboardGui elements after some time
+            game.Debris:AddItem(Chat1, 25)
+            game.Debris:AddItem(Sub, 25)
+
+            -- Define the tweenProperty function if missing
+            local function tweenProperty(object, properties, time)
+                local tweenInfo = TweenInfo.new(time, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+                local tween = ts:Create(object, tweenInfo, properties)
+                tween:Play()
+                return tween
+            end
+
+            -- Animations for transparency and positioning
+            tweenProperty(Chat1, {BackgroundTransparency = 0}, 1)
+            tweenProperty(Sub, {TextTransparency = 0}, 1)
+            tweenProperty(Chat1, {Position = UDim2.new(0.6, 0, 0.4, 0)}, 1)
+            task.wait(2)
+            tweenProperty(Chat1, {BackgroundTransparency = 1}, 2)
+            tweenProperty(Sub, {TextTransparency = 1}, 2)
+        end)() -- Don't forget the parentheses to immediately execute the coroutine
+    end
+end
+
+--[[END OF MOVE 1 ANIM]]
+
+--[[Move 2]]
+
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+
+local animationId = 15145462680
+
+
+local player = game.Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+
+local humanoid = character:WaitForChild("Humanoid")
+
+
+local function onAnimationPlayed(animationTrack)
+
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+
+
+local p = game.Players.LocalPlayer
+
+local Humanoid = p.Character:WaitForChild("Humanoid")
+
+
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+
+    animTrack:Stop()
+
+end
+
+
+local AnimAnim = Instance.new("Animation")
+
+AnimAnim.AnimationId = "rbxassetid://13904623751"
+
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+
+
+local startTime = 0
+
+
+Anim:Play()
+
+Anim:AdjustSpeed(1)
+
+Anim.TimePosition = startTime
+
+Anim:AdjustSpeed(0.8)
+
+delay(1.8, function()
+
+    Anim:Stop()
+
+task.wait(0)
+
+local AnimAnim2 = Instance.new("Animation")
+
+AnimAnim2.AnimationId = "rbxassetid://18464372850"
+
+local Anim2 = Humanoid:LoadAnimation(AnimAnim2)
+
+
+local startTime = 1.9
+
+
+Anim:Stop()
+
+Anim2:Play()
+
+Anim2:AdjustSpeed(0)
+
+Anim2.TimePosition = startTime
+
+Anim2:AdjustSpeed(1.2)
+
+end)
+
+Wait(2.5)
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local torso = character:WaitForChild("HumanoidRootPart")
+
+
+local function createRock(size)
+    local rock = Instance.new("Part")
+    rock.Size = size
+    rock.Shape = Enum.PartType.Block
+    rock.Anchored = false
+    rock.CanCollide = true
+    rock.Material = Enum.Material.Slate
+    rock.BrickColor = BrickColor.Gray()
+    rock.Parent = workspace
+
+    local bodyAngularVelocity = Instance.new("BodyAngularVelocity")
+    bodyAngularVelocity.MaxTorque = Vector3.new(4000, 4000, 4000)
+    bodyAngularVelocity.P = 3000
+    bodyAngularVelocity.Parent = rock
+
+    local randomDirection = Vector3.new(
+        math.random() * 10 - 11,
+        math.random() * 23 - 10,
+        math.random() * 19 - 12
+    ).unit
+    local spinSpeed = math.random(50, 150)
+    bodyAngularVelocity.AngularVelocity = randomDirection * spinSpeed
+
+    return rock, bodyAngularVelocity
+end
+
+local function rotateRocks(rotationSpeed, fallDelay, launchSpeed, verticalForce, spinSpeed, slideSpeed, slideDuration, shrinkDuration)
+    local rocks = {}
+    local numberOfRocks = 12
+    local radius = 5
+    local rockHeight = 0,6
+
+    for i = 1, numberOfRocks do
+        local angle = (i / numberOfRocks) * math.pi * 2
+        local size = Vector3.new(0.88, 0.56, 0.79)
+        if i % 2 == 0 then
+            size = Vector3.new(0.70, 0.47, 0.50)
+        end
+        local rock, bodyAngularVelocity = createRock(size)
+        local offsetX = math.cos(angle) * radius
+        local offsetZ = math.sin(angle) * radius
+
+        rock.Position = torso.Position + Vector3.new(offsetX, rockHeight, offsetZ)
+        table.insert(rocks, { rock = rock, bodyAngularVelocity = bodyAngularVelocity })
+    end
+
+    local runService = game:GetService("RunService")
+    local startTime = tick()
+    local connection
+    connection = runService.RenderStepped:Connect(function()
+        local elapsed = tick() - startTime
+        local angleStep = (elapsed * rotationSpeed) % (math.pi * 2)
+
+        if elapsed >= 0.6 then
+            rotationSpeed = math.max(rotationSpeed * 0.5, 1)
+        end
+
+        for i, rockData in ipairs(rocks) do
+            local rock = rockData.rock
+            local angle = (i / numberOfRocks) * math.pi * 2 + angleStep
+            local offsetX = math.cos(angle) * radius
+            local offsetZ = math.sin(angle) * radius
+            rock.Position = torso.Position + Vector3.new(offsetX, rockHeight, offsetZ)
+        end
+
+        if elapsed >= fallDelay then
+            connection:Disconnect()
+            for _, rockData in ipairs(rocks) do
+                local rock = rockData.rock
+                local bodyAngularVelocity = rockData.bodyAngularVelocity
+                if bodyAngularVelocity then
+                    bodyAngularVelocity:Destroy()
+                end
+
+                local tangentialVelocity = launchSpeed * (1 + math.random(-10, 10) / 100)  
+                local bodyVelocity = Instance.new("BodyVelocity")
+                local outwardDirection = (rock.Position - torso.Position).unit
+                local randomHorizontal = Vector3.new(math.random(-1, 1), 0, math.random(-1, 1)) * 0.3  
+                bodyVelocity.Velocity = (outwardDirection + randomHorizontal).unit * tangentialVelocity + Vector3.new(0, verticalForce, 0)
+                bodyVelocity.P = 1000
+                bodyVelocity.Parent = rock
+
+                local dust = Instance.new("ParticleEmitter")
+                dust.Texture = "rbxassetid://3527866534"  
+                dust.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 2), NumberSequenceKeypoint.new(1, 0)})
+                dust.Lifetime = NumberRange.new(0.5, 1)
+                dust.Rate = 100
+                dust.Speed = NumberRange.new(5, 10)
+                dust.Parent = rock
+                dust:Emit(5)
+
+                rock.Touched:Connect(function(hit)
+                    if hit:IsA("Terrain") or (hit:IsA("BasePart") and hit.CanCollide) then
+                        bodyVelocity:Destroy()
+
+                        local glideVelocity = outwardDirection * slideSpeed
+                        local glideStartTime = tick()
+
+                        local glideConnection
+                        glideConnection = runService.RenderStepped:Connect(function()
+                            local glideElapsed = tick() - glideStartTime
+                            if glideElapsed >= slideDuration then
+                                glideConnection:Disconnect()
+                                rock.Velocity = Vector3.new(0, 0, 0)
+
+
+                                local shrinkStartTime = tick()
+                                local shrinkConnection
+                                shrinkConnection = runService.RenderStepped:Connect(function()
+                                    local shrinkElapsed = tick() - shrinkStartTime
+                                    local scale = math.max(0, rock.Size.X * (1 - (shrinkElapsed / shrinkDuration)))
+                                    rock.Size = Vector3.new(scale, scale, scale)
+                                    rock.Position = rock.Position - Vector3.new(0, (rock.Size.Y - scale) / 2, 0)
+
+                                    if scale <= 0 then
+                                        shrinkConnection:Disconnect()
+                                        rock:Destroy()
+                                    end
+                                end)
+                            else
+                                rock.Velocity = glideVelocity * (1 - (glideElapsed / slideDuration))
+                            end
+                        end)
+                    end
+                end)
+            end
+        end
+    end)
+end
+
+
+local rotationSpeed = 0
+local fallDelay = 0
+local launchSpeed = 40
+local verticalForce = -50
+local spinSpeed = 100
+local slideSpeed = 30
+local slideDuration = 0.6
+local shrinkDuration = 2.5
+
+rotateRocks(rotationSpeed, fallDelay, launchSpeed, verticalForce, spinSpeed, slideSpeed, slideDuration, shrinkDuration)
+
+
+
+
+    end
+
+end
+
+--[[END OF MOVE 2 ANIM]]
+
+--[[Move 2 FINISHER]]
+
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+
+local animationId = 15279910941
+
+
+local player = game.Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+
+local humanoid = character:WaitForChild("Humanoid")
+
+
+local function onAnimationPlayed(animationTrack)
+
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+
+
+local p = game.Players.LocalPlayer
+
+local Humanoid = p.Character:WaitForChild("Humanoid")
+
+
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+
+    animTrack:Stop()
+
+end
+
+
+local AnimAnim = Instance.new("Animation")
+
+AnimAnim.AnimationId = "rbxassetid://14701242661"
+
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+
+
+local startTime = 7.8
+
+
+Anim:Play()
+
+Anim:AdjustSpeed(1)
+
+Anim.TimePosition = startTime
+
+Anim:AdjustSpeed(0.9)
+
+delay(20, function()
+
+    Anim:Stop()
+
+end)
+
+wait(2.3)
+local boom1 = game.ReplicatedStorage.Resources.KJEffects["spinnerthing"].spinningpartysmoke:Clone()
+boom1.Parent = game.Players.LocalPlayer.Character["HumanoidRootPart"]
+    for _, child in ipairs(boom1:GetChildren()) do
+        if child:IsA("ParticleEmitter") then -- Check if the child is a ParticleEmitter
+            child:Emit(30) -- Emit 20 particles
+        end
+    end
+
+
+    end
+
+end
+
+--[[END OF MOVE 2 ANIM]]
+
+--[[Move 3 GROUND VARIANT]]
+
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+
+local animationId = 15295895753
+
+
+local player = game.Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+
+local humanoid = character:WaitForChild("Humanoid")
+
+
+local function onAnimationPlayed(animationTrack)
+
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+
+
+local p = game.Players.LocalPlayer
+
+local Humanoid = p.Character:WaitForChild("Humanoid")
+
+
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+
+    animTrack:Stop()
+
+end
+
+
+local AnimAnim = Instance.new("Animation")
+
+AnimAnim.AnimationId = "rbxassetid://14701242661"
+
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+
+
+local startTime = 3.7
+
+
+Anim:Play()
+
+Anim:AdjustSpeed(0)
+
+Anim.TimePosition = startTime
+
+Anim:AdjustSpeed(1.1)
+
+
+delay(1.8, function()
+
+    Anim:Stop()
+
+end)
+
+local Test = game:GetService("ReplicatedStorage").Resources.Fang.Dash.Part.Dash
+local test = Test:Clone()
+test.Parent = game.Players.LocalPlayer.Character["HumanoidRootPart"]
+
+for _, child in ipairs(test:GetChildren()) do
+    if child:IsA("ParticleEmitter") then
+        child:Emit(30)
+        child.Enabled = true
+    end
+end
+
+-- Destroy function
+local function destroyTest()
+    for _, child in ipairs(test:GetChildren()) do
+        if child:IsA("ParticleEmitter") then
+            child.Enabled = false -- Disable the particle emitter
+        end
+    end
+
+    task.wait(0) -- Wait a couple of seconds for particles to dissipate
+    test:Destroy() -- Destroy the cloned object
+end
+
+-- Call the destroy function after a delay
+task.delay(0.8, destroyTest) -- Adjust the delay as needed
+
+
+    end
+
+end
+
+--[[END OF MOVE 3 ANIM GROUND VARIANT]]
+
+--[[Move 3 AIR VARIANT]]
+
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+
+local animationId = 15295336270
+
+
+local player = game.Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+
+local function onAnimationPlayed(animationTrack)
+
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+
+
+local p = game.Players.LocalPlayer
+
+local Humanoid = p.Character:WaitForChild("Humanoid")
+
+
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+
+    animTrack:Stop()
+
+end
+
+
+local AnimAnim = Instance.new("Animation")
+
+AnimAnim.AnimationId = "rbxassetid://13639700348"
+
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+
+
+local startTime = 0
+
+
+Anim:Play()
+
+Anim:AdjustSpeed(0)
+
+Anim.TimePosition = startTime
+
+Anim:AdjustSpeed(0.5)
+
+
+delay(0.5, function()
+
+    Anim:Stop()
+
+task.wait(0)
+
+local AnimAnim2 = Instance.new("Animation")
+
+AnimAnim2.AnimationId = "rbxassetid://13876406148"
+
+local Anim2 = Humanoid:LoadAnimation(AnimAnim2)
+
+
+local startTime = 0
+
+
+Anim:Stop()
+
+Anim2:Play()
+
+Anim2:AdjustSpeed(0)
+
+Anim2.TimePosition = startTime
+
+Anim2:AdjustSpeed(3)
+
+end)
+
+wait(0.7)
+local Test = game:GetService("ReplicatedStorage").Resources.Fang.WindBlast.Wind["2"]
+local test = Test:Clone()
+test.Parent = game.Players.LocalPlayer.Character["HumanoidRootPart"]
+
+for _, child in ipairs(test:GetChildren()) do
+    if child:IsA("ParticleEmitter") then
+        child:Emit(5)
+        child.Enabled = true
+    end
+end
+
+-- Destroy function
+local function destroyTest()
+    for _, child in ipairs(test:GetChildren()) do
+        if child:IsA("ParticleEmitter") then
+            child.Enabled = false -- Disable the particle emitter
+        end
+    end
+
+    task.wait(2) -- Wait a couple of seconds for particles to finish
+    test:Destroy() -- Destroy the cloned object
+end
+
+-- Call the destroy function after a delay
+task.delay(0.2, destroyTest) -- Adjust the delay as needed
+
+
+    end
+
+end
+
+--[[END OF MOVE 3 ANIM AIR VARIANT]]
+
+--[[Move 3 FINISHER]]
+
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+
+local animationId = 15436668469
+
+
+local player = game.Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+
+local humanoid = character:WaitForChild("Humanoid")
+
+
+local function onAnimationPlayed(animationTrack)
+
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+
+
+local p = game.Players.LocalPlayer
+
+local Humanoid = p.Character:WaitForChild("Humanoid")
+
+
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+
+    animTrack:Stop()
+
+end
+
+
+local AnimAnim = Instance.new("Animation")
+
+AnimAnim.AnimationId = "rbxassetid://17861844708"
+
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+
+
+local startTime = 0
+
+
+Anim:Play()
+
+Anim:AdjustSpeed(0)
+
+Anim.TimePosition = startTime
+
+Anim:AdjustSpeed(0.7)
+
+
+delay(10, function()
+
+    Anim:Stop()
+
+end)
+
+
+    end
+
+end
+
+--[[END OF MOVE 3 ANIM FINISHER]]
+
+--[[Move 4 COUNTER]]
+
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+
+local animationId = 15311685628
+
+
+local player = game.Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+
+local humanoid = character:WaitForChild("Humanoid")
+
+
+local function onAnimationPlayed(animationTrack)
+
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+
+local p = game.Players.LocalPlayer
+
+local Humanoid = p.Character:WaitForChild("Humanoid")
+
+
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+
+    animTrack:Stop()
+
+end
+
+
+local AnimAnim = Instance.new("Animation")
+
+AnimAnim.AnimationId = "rbxassetid://15957371124"
+
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+
+
+local startTime = 0
+
+
+Anim:Play()
+
+Anim:AdjustSpeed(0)
+
+Anim.TimePosition = startTime
+
+Anim:AdjustSpeed(1)
+
+
+    end
+
+end
+
+--[[END OF MOVE 4 ANIM COUNTER]]
+
+--[[Move 4 HIT]]
+
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+
+local animationId = 12510170988
+
+
+local player = game.Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+
+local humanoid = character:WaitForChild("Humanoid")
+
+
+local function onAnimationPlayed(animationTrack)
+
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+
+local p = game.Players.LocalPlayer
+
+local Humanoid = p.Character:WaitForChild("Humanoid")
+
+
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+
+    animTrack:Stop()
+
+end
+
+
+local AnimAnim = Instance.new("Animation")
+
+AnimAnim.AnimationId = "rbxassetid://15957371124"
+
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+
+
+local startTime = 0
+
+
+Anim:Play()
+
+Anim:AdjustSpeed(0)
+
+Anim.TimePosition = startTime
+
+Anim:AdjustSpeed(1)
+
+
+    end
+
+end
+
+--[[END OF MOVE 4 ANIM HIT]]
+
+--[[Wall combo]]
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+local animationId = 15997042291
+
+
+local player = game.Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+
+local humanoid = character:WaitForChild("Humanoid")
+
+
+local function onAnimationPlayed(animationTrack)
+
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+
+local p = game.Players.LocalPlayer
+
+local Humanoid = p.Character:WaitForChild("Humanoid")
+
+
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+
+    animTrack:Stop()
+
+end
+
+
+local AnimAnim = Instance.new("Animation")
+
+AnimAnim.AnimationId = "rbxassetid://15943915877"
+
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+
+
+local startTime = 0
+
+
+Anim:Play()
+
+Anim:AdjustSpeed(0)
+
+Anim.TimePosition = startTime
+
+Anim:AdjustSpeed(1.3)
+
+
+delay(0.5, function()
+
+    Anim:Stop()
+
+task.wait(0)
+
+local AnimAnim2 = Instance.new("Animation")
+
+AnimAnim2.AnimationId = "rbxassetid://16023456135"
+
+local Anim2 = Humanoid:LoadAnimation(AnimAnim2)
+
+
+local startTime = 0.7
+
+
+Anim:Stop()
+
+Anim2:Play()
+
+Anim2:AdjustSpeed(0)
+
+Anim2.TimePosition = startTime
+
+Anim2:AdjustSpeed(1)
+
+end)
+
+
+    end
+
+end
+
+--[[END OF WALL COMBO ANIM]]
+
+--[[Ult Activation]]
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+
+local animationId = 12447707844
+
+
+local player = game.Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+
+local humanoid = character:WaitForChild("Humanoid")
+
+
+local function onAnimationPlayed(animationTrack)
+
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+
+local p = game.Players.LocalPlayer
+
+local Humanoid = p.Character:WaitForChild("Humanoid")
+
+
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+
+    animTrack:Stop()
+
+end
+
+
+local AnimAnim = Instance.new("Animation")
+
+AnimAnim.AnimationId = "rbxassetid://17106858586 "
+
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+
+
+local startTime = 0
+
+
+Anim:Play()
+
+Anim:AdjustSpeed(0)
+
+Anim.TimePosition = startTime
+
+Anim:AdjustSpeed(1)
+
+
+    end
+
+end
+
+--[[END OF ULT ACTIVATION ANIM]]
+
+--[[Dash]]
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+
+local animationId = 10479335397
+
+
+local player = game.Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+
+local humanoid = character:WaitForChild("Humanoid")
+
+
+local function onAnimationPlayed(animationTrack)
+
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+
+local p = game.Players.LocalPlayer
+
+local Humanoid = p.Character:WaitForChild("Humanoid")
+
+
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+
+    animTrack:Stop()
+
+end
+
+
+local AnimAnim = Instance.new("Animation")
+
+AnimAnim.AnimationId = "rbxassetid://13294790250"
+
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+
+
+local startTime = 0
+
+
+Anim:Play()
+
+Anim:AdjustSpeed(0)
+
+Anim.TimePosition = startTime
+
+Anim:AdjustSpeed(1.3)
+
+
+delay(1.8, function()
+
+    Anim:Stop()
+
+end)
+
+
+    end
+
+end
+
+--[[END OF DASH ANIM]]
+
+--[[Dash right]]
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+
+local animationId = 10480796021
+
+
+local player = game.Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+
+local humanoid = character:WaitForChild("Humanoid")
+
+
+local function onAnimationPlayed(animationTrack)
+
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+
+local p = game.Players.LocalPlayer
+
+local Humanoid = p.Character:WaitForChild("Humanoid")
+
+
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+
+    animTrack:Stop()
+
+end
+
+
+local AnimAnim = Instance.new("Animation")
+
+AnimAnim.AnimationId = "rbxassetid://15957361339"
+
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+
+
+local startTime = 0
+
+
+Anim:Play()
+
+Anim:AdjustSpeed(0)
+
+Anim.TimePosition = startTime
+
+Anim:AdjustSpeed(1.6)
+
+
+delay(1.8, function()
+
+    Anim:Stop()
+
+end)
+
+local Test = game:GetService("ReplicatedStorage").Resources.NinjaUlt.Start_Effects.Particles.Low
+local test = Test:Clone()
+test.Parent = game.Players.LocalPlayer.Character["Torso"]
+
+
+for _, child in ipairs(test:GetChildren()) do
+    if child:IsA("ParticleEmitter") then
+        
+        child:Emit(10)
+        child.Enabled = true
+    end
+end
+
+-- Destroy function
+local function destroyTest()
+    for _, child in ipairs(test:GetChildren()) do
+        if child:IsA("ParticleEmitter") then
+            child.Enabled = false -- Disable the particle emitter
+        end
+    end
+
+    task.wait(2) -- Wait a couple of seconds for particles to finish
+    test:Destroy() -- Destroy the cloned object
+end
+
+-- Call the destroy function after a delay
+task.delay(0.2, destroyTest) -- Adjust the delay as needed
+
+
+    end
+
+end
+
+--[[END OF DASH right ANIM]]
+
+--[[Dash left]]
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+
+local animationId = 10480793962
+
+
+local player = game.Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+
+local humanoid = character:WaitForChild("Humanoid")
+
+
+local function onAnimationPlayed(animationTrack)
+
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+
+local p = game.Players.LocalPlayer
+
+local Humanoid = p.Character:WaitForChild("Humanoid")
+
+
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+
+    animTrack:Stop()
+
+end
+
+
+local AnimAnim = Instance.new("Animation")
+
+AnimAnim.AnimationId = "rbxassetid://15957361339"
+
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+
+
+local startTime = 0
+
+
+Anim:Play()
+
+Anim:AdjustSpeed(0)
+
+Anim.TimePosition = startTime
+
+Anim:AdjustSpeed(1.6)
+
+
+delay(1.8, function()
+
+    Anim:Stop()
+
+end)
+
+local Test = game:GetService("ReplicatedStorage").Resources.NinjaUlt.Start_Effects.Particles.Low
+local test = Test:Clone()
+test.Parent = game.Players.LocalPlayer.Character["Torso"]
+
+
+for _, child in ipairs(test:GetChildren()) do
+    if child:IsA("ParticleEmitter") then
+        
+        child:Emit(10)
+        child.Enabled = true
+    end
+end
+
+-- Destroy function
+local function destroyTest()
+    for _, child in ipairs(test:GetChildren()) do
+        if child:IsA("ParticleEmitter") then
+            child.Enabled = false -- Disable the particle emitter
+        end
+    end
+
+    task.wait(2) -- Wait a couple of seconds for particles to finish
+    test:Destroy() -- Destroy the cloned object
+end
+
+-- Call the destroy function after a delay
+task.delay(0.2, destroyTest) -- Adjust the delay as needed
+
+
+    end
+
+end
+
+--[[END OF DASH left ANIM]]
+
+--[[Uppercut]]
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+
+local animationId = 10503381238
+
+
+local player = game.Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+
+local humanoid = character:WaitForChild("Humanoid")
+
+
+local function onAnimationPlayed(animationTrack)
+
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+
+local p = game.Players.LocalPlayer
+
+local Humanoid = p.Character:WaitForChild("Humanoid")
+
+
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+
+    animTrack:Stop()
+
+end
+
+
+local AnimAnim = Instance.new("Animation")
+
+AnimAnim.AnimationId = "rbxassetid://14900168720"
+
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+
+
+local startTime = 1.3
+
+
+Anim:Play()
+
+Anim:AdjustSpeed(0)
+
+Anim.TimePosition = startTime
+
+Anim:AdjustSpeed(0.7)
+
+
+    end
+
+end
+
+--[[END OF UPPERCUT ANIM]]
+
+--[[Downslam]]
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+
+local animationId = 10470104242
+
+
+local player = game.Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+
+local humanoid = character:WaitForChild("Humanoid")
+
+
+local function onAnimationPlayed(animationTrack)
+
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+
+local p = game.Players.LocalPlayer
+
+local Humanoid = p.Character:WaitForChild("Humanoid")
+
+
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+
+    animTrack:Stop()
+
+end
+
+
+local AnimAnim = Instance.new("Animation")
+
+AnimAnim.AnimationId = "rbxassetid://14798608838"
+
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+
+
+local startTime = 0.3
+
+
+wait(0)
+
+Anim:Play()
+
+Anim:AdjustSpeed(0)
+
+Anim.TimePosition = startTime
+
+Anim:AdjustSpeed(1.9)
+
+
+    end
+
+end
+
+--[[END OF DOWNSLAM ANIM]]
+
+--[[Punch anims]]
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+
+local Players = game:GetService("Players")
+
+local player = Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+
+local humanoid = character:WaitForChild("Humanoid")
+
+
+local animationIdsToStop = {
+
+    [17859015788] = true, --downslam finisher
+
+    [10469630950] = true, --punch1
+
+    [10469630950] = true, --punch2
+
+    [10469639222] = true, --punch3
+
+    [10469630950] = true, --punch4
+
+}
+
+
+local replacementAnimations = {
+
+    ["10469493270"] = "rbxassetid://17889458563", --punch1
+
+    ["10469630950"] = "rbxassetid://17889461810", --punch2
+
+    ["10469639222"] = "rbxassetid://17889471098", --punch3
+
+    ["10469643643"] = "rbxassetid://17889290569", --punch4
+
+    ["17859015788"] = "rbxassetid://12684185971", --downslam finisher
+
+    ["11365563255"] = "rbxassetid://14516273501" --punch idk
+
+}
+
+
+local queue = {}
+
+local isAnimating = false
+
+
+local function playReplacementAnimation(animationId)
+
+    if isAnimating then
+
+        table.insert(queue, animationId)
+
+        return
+
+    end
+
+   
+
+    isAnimating = true
+
+    local replacementAnimationId = replacementAnimations[tostring(animationId)]
+
+    if replacementAnimationId then
+
+        local AnimAnim = Instance.new("Animation")
+
+        AnimAnim.AnimationId = replacementAnimationId
+
+        local Anim = humanoid:LoadAnimation(AnimAnim)
+
+        Anim:Play()
+
+       
+
+        Anim.Stopped:Connect(function()
+
+            isAnimating = false
+
+            if #queue > 0 then
+
+                local nextAnimationId = table.remove(queue, 1)
+
+                playReplacementAnimation(nextAnimationId)
+
+            end
+
+        end)
+
+    else
+
+        isAnimating = false
+
+    end
+
+end
+
+
+local function stopSpecificAnimations()
+
+    for _, track in ipairs(humanoid:GetPlayingAnimationTracks()) do
+
+        local animationId = tonumber(track.Animation.AnimationId:match("%d+"))
+
+        if animationIdsToStop[animationId] then
+
+            track:Stop()
+
+        end
+
+    end
+
+end
+
+
+local function onAnimationPlayed(animationTrack)
+
+    local animationId = tonumber(animationTrack.Animation.AnimationId:match("%d+"))
+
+    if animationIdsToStop[animationId] then
+
+        stopSpecificAnimations()
+
+        animationTrack:Stop()
+
+       
+
+        local replacementAnimationId = replacementAnimations[tostring(animationId)]
+
+        if replacementAnimationId then
+
+            playReplacementAnimation(animationId)
+
+        end
+
+    end
+
+end
+
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+
+local player = game.Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+
+local function onBodyVelocityAdded(bodyVelocity)
+
+    if bodyVelocity:IsA("BodyVelocity") then
+
+        bodyVelocity.Velocity = Vector3.new(bodyVelocity.Velocity.X, 0, bodyVelocity.Velocity.Z)
+
+    end
+
+end
+
+
+character.DescendantAdded:Connect(onBodyVelocityAdded)
+
+
+for _, descendant in pairs(character:GetDescendants()) do
+
+    onBodyVelocityAdded(descendant)
+
+end
+
+
+player.CharacterAdded:Connect(function(newCharacter)
+
+    character = newCharacter
+
+    humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+    character.DescendantAdded:Connect(onBodyVelocityAdded)
+
+   
+
+    for _, descendant in pairs(character:GetDescendants()) do
+
+        onBodyVelocityAdded(descendant)
+
+    end
+
+end)
+
+-- b64 decode
+local function decodeBase64(data)
+    local b = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+    data = string.gsub(data, '[^'..b..'=]', '')
+    return (data:gsub('.', function(x)
+        if (x == '=') then return '' end
+        local r,f = '',(b:find(x)-1)
+        for i=6,1,-1 do r=r..(f%2^i-f%2^(i-1)>0 and '1' or '0') end
+        return r;
+    end):gsub('%d%d%d?%d?%d?%d?%d?%d?', function(x)
+        if (#x ~= 8) then return '' end
+        local c=0
+        for i=1,8 do c=c+(x:sub(i,i)=='1' and 2^(8-i) or 0) end
+        return string.char(c)
+    end))
+end
+
+-- sgui
+local sG = Instance.new("ScreenGui")
+sG.Name = "UIContainer"
+sG.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- txlabel
+local tL = Instance.new("TextLabel")
+tL.Size = UDim2.new(1, 0, 0, 30) -- size
+tL.Position = UDim2.new(0, 1, 0, 0) -- Top
+tL.BackgroundTransparency = 1 -- bg
+tL.Text = decodeBase64("VG9qaSBtb3Zlc2V0IG1hZGUgYnkgVG9reW96eGMvQ2FjYWxhdCAob24gRGlzY29yZCk=") -- Decoded text
+tL.TextColor3 = Color3.new(1, 1, 1) --clr
+tL.Font = Enum.Font.Arcade 
+tL.TextScaled = true -- scale
+tL.TextTransparency = 0.7 --opaque
+tL.Parent = sG
+
+local ult1 = "Chain Of A Thousand Miles"
+local ult2 = "Split Soul"
+local ult3 = "Cross Slash"
+local ult4 = "Heavenly Cut"
+
+
+
+local player = game.Players.LocalPlayer
+local playerGui = player.PlayerGui
+local character = player.Character or player.CharacterAdded:Wait() -- Get character
+
+local toolNamesToReplace = {
+    ["1"] = {original = "Sunset", new = ult1},
+    ["2"] = {original = "Solar Cleave", new = ult2},
+    ["3"] = {original = "Sunrise", new = ult3},
+    ["4"] = {original = "Atomic Slash", new = ult4}
+}
+
+local function checkAndReplaceToolName()
+    while character.Humanoid.Health > 0 do
+        local hotbar = playerGui:FindFirstChild("Hotbar")
+        if hotbar then
+            local backpack = hotbar:FindFirstChild("Backpack")
+            if backpack then
+                local hotbarFrame = backpack:FindFirstChild("Hotbar")
+                if hotbarFrame then
+                    for buttonName, toolData in pairs(toolNamesToReplace) do
+                        local baseButton = hotbarFrame:FindFirstChild(buttonName) and hotbarFrame[buttonName]:FindFirstChild("Base")
+                        if baseButton then
+                            local toolName = baseButton:FindFirstChild("ToolName")
+                            if toolName and toolName.Text == toolData.original then
+                                toolName.Text = toolData.new -- Assign the new name specific to the tool
+                            end
+                        end
+                    end
+                end
+            end
+        end
+        wait(0.1) -- Small wait to avoid script overload
+    end
+    print("Player died. Script stopped.")
+end
+
+checkAndReplaceToolName()
